@@ -2,11 +2,14 @@
 
 body {
     font-family: 'Anek Telugu', sans-serif;
+    background-color: #0a3d62;
+    color: white;
 }
 
 h1 {
     font-family: 'Press Start 2P', cursive;
     text-align: center;
+    color: #e58e26;
 }
 
 ul {
@@ -23,7 +26,7 @@ ul {
 .pokemon-card {
     display: flex;
     width: 300px;
-    border: 1px black solid;
+    border: 1px #60a3bc solid;
     margin: 10px;
     border-radius: 5px;
 }
@@ -34,22 +37,29 @@ ul {
 
 .content-left {
     display: flex;
-    background-color: white;
+    background-color: #f6b93b;
     flex-direction: column;
     align-items: center;
 }
 
+.content-right {
+    width: 100%;
+    background-color: #3c6382;
+    color: white;
+    padding-left: 20px;
+}
+
 .pokemon-img {
     margin: 10px;
-    background-color: rgba(255, 255, 0, 0.5);
+    background-color: #fad390;
     border-radius: 50%;
 }
 
 .pokemon-id {
-    background-color: rgba(169, 169, 169, 0.5);
+    background-color:#3c63828b;
     width: 50px;
     text-align: center;
-
+    align-content: center;
     border-radius: 5px;
 }
 
