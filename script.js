@@ -8,20 +8,32 @@ async function fetchPokemon() {
     const data =  await response.json(); 
     
     const pokeDetails = {
-      id: data.id,
+      id: data.id
+        .toString()
+        .padStart(3,'0'),
       name: data.name,
       img: data.sprites.front_default,
-      type: data.types[0].type.name
+      type: data.types
+        .map(type => type.type.name)
+        .join(', '),
+      height: data.height,
+      weight: data.weight,
     };
 
     html += `
       <div class="pokemon-card" data-pokemon-id="${pokeDetails.id}">
-        <div class="img-wrapper">
+        <div class="content-left">
           <img class="pokemon-img" src="${pokeDetails.img}">
+          <span class="pokemon-id">#${pokeDetails.id}</span>
         </div>
-        <div class="details-wrapper">
+        <div class="content-right">
           <h3 class="pokemon-name">${pokeDetails.name}</h3>
-          <span>Type: ${pokeDetails.type} </span>
+          <ul>
+            <li>Type: <span class="pokemon-type">${pokeDetails.type}</type> </li>
+            <li>Height: ${pokeDetails.height} </li>
+            <li>Weight: ${pokeDetails.weight} </li>
+          </ul>
+
         </div>
       </div>
   `
