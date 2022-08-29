@@ -8,12 +8,11 @@ function filterByType() {
   const filterValue = filter.value;
   let types = ''
   pokemonCards.forEach(card => {
+    card.classList.remove('hide');
     let types = card.dataset.pokemonType
     if (!types.includes(filterValue)) {
       card.classList.toggle('hide');
-    }
-
-  });
+    }});
 };
 
 
