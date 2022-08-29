@@ -8,8 +8,10 @@ function filterByType() {
   const filterValue = filter.value;
   let types = ''
   pokemonCards.forEach(card => {
-    card.classList.remove('hide');
     let types = card.dataset.pokemonType
+    // Reset filter
+    card.classList.remove('hide');
+
     if (!types.includes(filterValue)) {
       card.classList.toggle('hide');
     }});
@@ -36,7 +38,7 @@ async function fetchPokemon() {
     };
 
     html += `
-      <div class="pokemon-card" data-pokemon-type="${pokeDetails.type}">
+      <div class="pokemon-card" data-pokemon-type="all, ${pokeDetails.type}">
         <div class="content-left">
           <img class="pokemon-img" src="${pokeDetails.img}">
           <span class="pokemon-id">#${pokeDetails.id}</span>
