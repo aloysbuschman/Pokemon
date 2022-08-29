@@ -28,6 +28,10 @@ ul {
     border-radius: 5px;
 }
 
+.pokemon-card.hide {
+    display: none;
+}
+
 .content-left {
     display: flex;
     background-color: white;

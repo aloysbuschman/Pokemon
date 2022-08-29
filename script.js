@@ -1,9 +1,25 @@
 const wrapper = document.querySelector('#wrapper');
+const filter = document.querySelector('#filter-type');
+
+filter.addEventListener('change', filterByType);
+
+function filterByType() {
+  const pokemonCards = document.querySelectorAll('.pokemon-card');
+  const filterValue = filter.value;
+  let types = ''
+  pokemonCards.forEach(card => {
+    let types = card.dataset.pokemonType
+    if (!types.includes(filterValue)) {
+      card.classList.toggle('hide');
+    }
+
+  });
+};
 
 
 async function fetchPokemon() {
-  let html = ''
-  for (let i = 1; i <= 15; i++) {
+  let html = ''; 
+  for (let i = 1; i <= 150; i++) {
     const response =  await fetch(`https://pokeapi.co/api/v2/pokemon/${i}`);
     const data =  await response.json(); 
     
@@ -21,7 +37,7 @@ async function fetchPokemon() {
     };
 
     html += `
-      <div class="pokemon-card" data-pokemon-id="${pokeDetails.id}">
+      <div class="pokemon-card" data-pokemon-type="${pokeDetails.type}">
         <div class="content-left">
           <img class="pokemon-img" src="${pokeDetails.img}">
           <span class="pokemon-id">#${pokeDetails.id}</span>
@@ -38,8 +54,6 @@ async function fetchPokemon() {
       </div>
   `
   wrapper.innerHTML = html;
-}
-
-}
+}};
 
 fetchPokemon();
